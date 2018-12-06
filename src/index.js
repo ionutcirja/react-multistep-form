@@ -13,7 +13,7 @@ type Props = {
 }
 
 type State = {
-  page: number,
+  currentPageIndex: number,
   submitting: boolean,
   error: string,
 };
@@ -25,7 +25,7 @@ class MultiStepForm extends Component<Props, State> {
   };
 
   state = {
-    page: 0,
+    currentPageIndex: 0,
     submitting: false,
     error: '',
   };
@@ -50,19 +50,19 @@ class MultiStepForm extends Component<Props, State> {
   next = () => {
     const { pages } = this.props;
     this.setState(prevState => ({
-      page: Math.min(prevState.page + 1, pages.length - 1),
+      currentPageIndex: Math.min(prevState.currentPageIndex + 1, pages.length - 1),
     }));
   };
 
   previous = () => {
     this.setState(prevState => ({
-      page: Math.max(prevState.page - 1, 0),
+      currentPageIndex: Math.max(prevState.currentPageIndex - 1, 0),
     }));
   };
 
   edit = () => {
     this.setState(() => ({
-      page: 0,
+      currentPageIndex: 0,
     }));
   };
 
@@ -75,8 +75,8 @@ class MultiStepForm extends Component<Props, State> {
 
   submit = (values: Values) => {
     const { pages, handleSubmit } = this.props;
-    const { page } = this.state;
-    const isLastPage = page === pages.length - 1;
+    const { currentPageIndex } = this.state;
+    const isLastPage = currentPageIndex === pages.length - 1;
 
     this.setValues(values);
 
@@ -99,8 +99,8 @@ class MultiStepForm extends Component<Props, State> {
 
   render() {
     const { pages } = this.props;
-    const { page, submitting, error } = this.state;
-    const ActivePage = pages[page];
+    const { currentPageIndex, submitting, error } = this.state;
+    const ActivePage = pages[currentPageIndex];
 
     return (
       <ActivePage
