@@ -95,7 +95,7 @@ describe('React MultiStep Form', () => {
 
     it('should set submitting prop value to false and error state value to an empty string'
       + ' when submit promise will be resolved', (done) => {
-      propsToRender.handleSubmit.mockImplementation(options => options.resolve());
+      propsToRender.handleSubmit.mockImplementation(options => options.submitSuccess());
       const wrapper = shallow(<MultiStepForm {...propsToRender} />);
       wrapper.instance().next();
       wrapper.instance().next();
@@ -109,7 +109,7 @@ describe('React MultiStep Form', () => {
     });
 
     it('should set submitting prop value to false when submit promise will be rejected', (done) => {
-      propsToRender.handleSubmit.mockImplementation(options => options.reject({}));
+      propsToRender.handleSubmit.mockImplementation(options => options.submitError({}));
       const wrapper = shallow(<MultiStepForm {...propsToRender} />);
       wrapper.instance().next();
       wrapper.instance().next();
@@ -124,7 +124,7 @@ describe('React MultiStep Form', () => {
 
     it('should set submitting prop value to false and set an error prop'
       + ' when submit promise will be rejected with an error', (done) => {
-      propsToRender.handleSubmit.mockImplementation(options => options.reject('some error'));
+      propsToRender.handleSubmit.mockImplementation(options => options.submitError('some error'));
       const wrapper = shallow(<MultiStepForm {...propsToRender} />);
       wrapper.instance().next();
       wrapper.instance().next();

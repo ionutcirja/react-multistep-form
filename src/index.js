@@ -84,7 +84,11 @@ class MultiStepForm extends Component<Props, State> {
       this.setSubmitting(true);
 
       new Promise((resolve, reject) => {
-        handleSubmit({ values: this.values, resolve, reject });
+        handleSubmit({
+          values: this.values,
+          submitSuccess: resolve,
+          submitError: reject,
+        });
       }).then(() => {
         this.setSubmitting(false);
       }).catch((error) => {
