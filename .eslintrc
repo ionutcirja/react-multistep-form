@@ -20,7 +20,6 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
-    "no-nested-ternary": "off"
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }]
   }
 }
