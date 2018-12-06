@@ -1,0 +1,73 @@
+{
+  "name": "react-multistep-form",
+  "version": "1.0.0",
+  "author": "Ionut Cirja",
+  "url": "https://github.com/ionutcirja/react-multistep-form",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionutcirja/react-multistep-form"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel -d lib/ src/ --ignore **/*.spec.js",
+    "prepublish": "npm run lint && npm run flow && npm test && npm run build",
+    "lint": "eslint src/**",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:watchAll": "jest --watchAll",
+    "flow": "flow"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./config/enzyme-setup.js",
+    "verbose": true,
+    "collectCoverage": true,
+    "testURL": "http://localhost/",
+    "collectCoverageFrom": [
+      "**/*.{js}",
+      "!**/lib/**",
+      "!**/node_modules/**",
+      "!**/config/**",
+      "!**/coverage/**"
+    ],
+    "testMatch": [
+      "**/__tests__/?(*.)(spec|test).js"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ]
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "peerDependencies": {
+    "react": "^16.6.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "flow-bin": "^0.87.0",
+    "jest": "^23.6.0",
+    "pre-commit": "^1.2.2"
+  }
+}
