@@ -8,6 +8,13 @@
     "type": "git",
     "url": "https://github.com/ionutcirja/react-multistep-form"
   },
+  "keywords": [
+    "react",
+    "forms",
+    "multistep forms",
+    "formik",
+    "redux form"
+  ],
   "main": "lib/index.js",
   "scripts": {
     "build": "babel -d lib/ src/ --ignore **/*.spec.js",
